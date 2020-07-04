@@ -35,23 +35,20 @@ const workoutSchema = new Schema({
     }
   ]   
 },
-  /// VERIFY 
+
 {
+  // adds a virtual property, not stored in Mongo, to compute properties on documents 
   toJSON: {
-  // include any virtual properties when data is requested
   virtuals: true,
   },
 }
 );
 
-// adds a dynamically-created property to schema
+// Creates a virtual property `totalDuration` that's computed from reducing the exercises down to the sum today of their duration 
 workoutSchema.virtual("totalDuration").get(function () {
-  // "reduce" array of exercises down to just the sum of their durations
 return this.exercises.reduce((total, exercise) => {
     return total + exercise.duration;
-}, 0);
-
-/// VERIFY ABOVE
+}, 0)
   
 });
   

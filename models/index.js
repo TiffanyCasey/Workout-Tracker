@@ -1,3 +1,3 @@
-odule.exports = {
+module.exports = {
     Workout: require("..../models/workouts.js")
     };
