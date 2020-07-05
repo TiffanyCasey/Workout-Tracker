@@ -44,7 +44,7 @@ const workoutSchema = new Schema({
 }
 );
 
-// Creates a virtual property `totalDuration` that's computed from reducing the exercises down to the sum today of their duration 
+// Creates a virtual property `totalDuration` that's computed from reducing the exercises down to the sum today of their duration. This was the only computation that wasn't accounted for in workout.js
 workoutSchema.virtual("totalDuration").get(function () {
 return this.exercises.reduce((total, exercise) => {
     return total + exercise.duration;
